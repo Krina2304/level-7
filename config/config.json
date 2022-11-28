@@ -16,11 +16,7 @@
 
   },
   "production": {
-    "username": "postgres",
-    "password": "krinapatel2304",
-    "database": "wd-todo-test",
-    "host": "127.0.0.1",
-    "dialect": "postgres"
-  
+    "use_env_variable": "DATABASE_URL",
+    "DIALECT": "postgres"
   }
 }

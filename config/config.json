@@ -2,16 +2,18 @@
   "development": {
     "username": "postgres",
     "password": "krinapatel2304",
-    "database": "wd-todo-dev",
+    "database": "todo_db",
     "host": "127.0.0.1",
+    "port":"5432",
     "dialect": "postgres"
   },
   
   "test": {
     "username": "postgres",
     "password": "krinapatel2304",
-    "database": "wd-todo-test",
+    "database": "todo_db",
     "host": "127.0.0.1",
+    "port":"5432",
     "dialect": "postgres"
 
   },

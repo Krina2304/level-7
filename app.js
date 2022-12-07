@@ -5,7 +5,8 @@ const bodyParser = require("body-parser");
 const path = require("path");
 const { response } = require("express");
 
-app.use(bodyParser.json());
+app.use(bodyParser.json({type: '*'}));
+app.use(express.urlencoded({extended:false}))
 app.set("view engine", "ejs");
 app.use(express.static(path.join(__dirname + "/public")));
 // app.use(express.static("public"));
@@ -38,14 +39,13 @@ app.get("/todos", async (req, res) => {
 });
 
 app.post("/todos", async (req, res) => {
-  console.log("Body : ", req.body);
+  console.log("Body Title : ", req.body.title);
+  console.log("Body due Date: ", req.body.dueDate);
+  console.log("Body due Date: ", req.body);
   try {
-    const todo = await Todo.addTodo({
-      title: req.body.title,
-      dueDate: req.body.dueDate,
-      completed: false,
-    });
-    return res.json(todo);
+    const todo = await Todo.addTodo(req.body);
+    //return res.json(todo);
+    res.redirect("/")
   } catch (error) {
     console.log(error);
     return response.status(422).json(error);
